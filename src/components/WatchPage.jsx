@@ -2,18 +2,19 @@ import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import CommentsContainer from './CommentsContainer';
 
 const WatchPage = () => {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams.get("v"));
+  // console.log(searchParams.get("v"));
 
   useEffect(() => {
     dispatch(closeMenu());
   }, []);
 
   return (
-    <div className="px-10 py-5">
+    <div className="px-10 py-5 w-[70%] border">
       <iframe
         className="rounded-xl"
         width="1000"
@@ -25,6 +26,8 @@ const WatchPage = () => {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       ></iframe>
+
+      <CommentsContainer />
     </div>
   );
 };
